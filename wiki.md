@@ -72,3 +72,105 @@ Thực hành tạo một route đơn giản hiển thị “Hello Laravel!” đ
 Kết quả:
 ✔️ Hiểu rõ cấu trúc thư mục và vai trò của từng phần trong framework Laravel.
 ✔️ Thành thạo thao tác cơ bản với route và view.
+Nội dung đã thực hiện:
+
+Tìm hiểu Routing trong Laravel – cơ chế giúp ánh xạ các URL tới logic xử lý cụ thể.
+
+Phân biệt các loại route:
+
+GET, POST, PUT, DELETE, PATCH, …
+
+Thực hành tạo route cơ bản trong file routes/web.php:
+
+Route::get('/', function () {
+    return 'Chào mừng đến với Laravel!';
+});
+
+
+Thực hành route có tham số:
+
+Route::get('/user/{id}', function ($id) {
+    return "User ID: " . $id;
+});
+
+
+Sử dụng Route name và route group để quản lý code tốt hơn.
+
+Kết quả:
+✔️ Hiểu rõ khái niệm, cấu trúc và cách hoạt động của Route trong Laravel.
+✔️ Tạo được các route cơ bản và route động, tổ chức nhóm route logic hợp lý.
+
+🔹 2.2 Controllers
+
+Nội dung đã thực hiện:
+
+Tìm hiểu Controller trong Laravel – lớp trung gian xử lý logic giữa Route và View.
+
+Thực hành tạo Controller bằng lệnh Artisan:
+
+php artisan make:controller PageController
+
+
+Định nghĩa hàm trong Controller, ví dụ:
+
+class PageController extends Controller {
+    public function home() {
+        return view('home');
+    }
+}
+
+
+Kết nối Controller với Route:
+
+Route::get('/home', [PageController::class, 'home']);
+
+
+Thực hành thêm: tạo Controller tài nguyên (Resource Controller) để xử lý CRUD tự động:
+
+php artisan make:controller ProductController --resource
+
+
+Kết quả:
+✔️ Hiểu rõ vai trò của Controller trong mô hình MVC.
+✔️ Thành thạo cách tạo và sử dụng Controller để xử lý logic cho ứng dụng web.
+
+🔹 2.3 View
+
+Nội dung đã thực hiện:
+
+Tìm hiểu View trong Laravel – phần giao diện hiển thị cho người dùng.
+
+Thực hành tạo view bằng Blade template trong thư mục resources/views/.
+Ví dụ: file home.blade.php
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang chủ</title>
+</head>
+<body>
+    <h1>Chào mừng đến với Laravel!</h1>
+</body>
+</html>
+
+
+Truyền dữ liệu từ Controller sang View:
+
+public function home() {
+    $name = "Nguyễn Văn A";
+    return view('home', compact('name'));
+}
+
+
+Trong file home.blade.php:
+
+<h2>Xin chào, {{ $name }}</h2>
+
+
+Sử dụng Blade directives như:
+
+@if, @foreach, @include, @extends, @section, @yield để tái sử dụng layout.
+
+Kết quả:
+✔️ Biết cách tạo, tổ chức và kết nối View với Controller.
+✔️ Thành thạo cú pháp Blade Template và tái sử dụng giao diện hiệu quả.
