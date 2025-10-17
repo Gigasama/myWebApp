@@ -3,9 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class autherFactory  extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,11 +14,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'tauseedzaman',
-            'username' => 'tauseedzaman',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'name' => $this->faker->name
         ];
     }
-
-
 }
