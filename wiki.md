@@ -174,3 +174,107 @@ Sử dụng Blade directives như:
 Kết quả:
 ✔️ Biết cách tạo, tổ chức và kết nối View với Controller.
 ✔️ Thành thạo cú pháp Blade Template và tái sử dụng giao diện hiệu quả.
+Nội dung đã thực hiện:
+
+Tìm hiểu hệ thống quản lý cơ sở dữ liệu (CSDL) trong Laravel.
+
+Cấu hình kết nối cơ sở dữ liệu trong file .env:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+Kiểm tra kết nối và tạo mới database bằng lệnh Artisan:
+
+php artisan migrate
+
+
+Hiểu rõ cơ chế ORM (Object-Relational Mapping) giúp Laravel làm việc với dữ liệu mà không cần viết câu lệnh SQL trực tiếp.
+
+Kết quả:
+✔️ Đã kết nối thành công Laravel với MySQL thông qua file cấu hình .env.
+✔️ Sẵn sàng cho việc tạo bảng và thao tác dữ liệu bằng Migration & Eloquent ORM.
+
+🔹 2.4.1 Migration
+
+Nội dung đã thực hiện:
+
+Migration là công cụ giúp quản lý cấu trúc CSDL bằng code.
+
+Thực hành tạo Migration bằng lệnh:
+
+php artisan make:migration create_products_table
+
+
+Chỉnh sửa file migration trong thư mục database/migrations:
+
+public function up(): void
+{
+    Schema::create('products', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->integer('price');
+        $table->text('description')->nullable();
+        $table->timestamps();
+    });
+}
+
+
+Chạy migration để tạo bảng:
+
+php artisan migrate
+
+
+Tìm hiểu thêm các lệnh quản lý migration:
+
+php artisan migrate:rollback (quay lại phiên bản trước)
+
+php artisan migrate:refresh (làm mới toàn bộ bảng)
+
+Kết quả:
+✔️ Hiểu rõ vai trò của Migration trong việc kiểm soát phiên bản CSDL.
+✔️ Tạo được bảng và quản lý thay đổi cấu trúc CSDL bằng công cụ dòng lệnh Artisan.
+
+🔹 2.4.2 Eloquent ORM
+
+Nội dung đã thực hiện:
+
+Eloquent ORM là hệ thống ánh xạ đối tượng giúp làm việc với CSDL theo hướng đối tượng thay vì viết SQL.
+
+Tạo Model tương ứng với bảng products:
+
+php artisan make:model Product
+
+
+Sử dụng Model để thao tác dữ liệu:
+
+// Thêm dữ liệu
+$product = new Product();
+$product->name = 'Laptop ASUS';
+$product->price = 15000000;
+$product->description = 'Hiệu năng cao, thiết kế đẹp';
+$product->save();
+
+// Lấy tất cả dữ liệu
+$products = Product::all();
+
+// Tìm kiếm theo ID
+$item = Product::find(1);
+
+// Cập nhật dữ liệu
+$item->price = 16000000;
+$item->save();
+
+// Xóa dữ liệu
+$item->delete();
+
+
+Tìm hiểu thêm về Query Builder và Relationship (quan hệ giữa các bảng: One-to-Many, Many-to-Many).
+
+Kết quả:
+✔️ Hiểu cách sử dụng Eloquent ORM để thêm, sửa, xóa, truy xuất dữ liệu từ CSDL.
+✔️ Thực hành thành công các thao tác CRUD cơ bản thông qua Model.
